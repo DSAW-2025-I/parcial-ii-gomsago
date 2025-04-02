@@ -43,3 +43,88 @@ Este examen evalúa tu capacidad para construir un backend básico usando Expres
 - Agregue el enlace del repositorio desplegado al README.
 
 ¡Buena suerte!
+
+**Nombre: Juan José Gómez Saavedra**
+
+**NOTA**: No poseo computador personal portatil por lo que solicito un computador en la universidad. Estos computadores no tienen instalado node.js ni los recursos que necesito para poder desplegar en vercel debido a que me piden permisos de administrador (Usuario y contraseña) la  cual es información que yo no poseo. Adjunto , mi evidencia más el código.
+
+![Image](https://github.com/user-attachments/assets/a80e4d7f-811d-417b-b735-d8eeea43f5fc)
+
+![Image (1)](https://github.com/user-attachments/assets/75b7dac5-f762-4cee-92d9-ac48a3cc3b34)
+
+-------------------------------------------------------------------------------
+**server.js**
+const express = require('express');
+const app = express();
+const PORT = 3000;
+
+// Aquí guardo todo en la nemoria 
+
+let products = [
+  { id: 1, name: 'Portatil', price: 2000000 },
+  { id: 2, name: 'Iphone', price: 9000000 },
+  { id: 3, name: 'Ipad', price: 1500000 }
+];
+
+app.use(express.json());
+
+
+app.get('/products', (req, res) => {
+  res.json(products);
+});
+
+
+app.get('/products/:id', (req, res) => {
+  const productId = parseInt(req.params.id);
+  const product = products.find(p => p.id === productId);
+
+  if (!product) {
+    return res.status(404).json({ error: 'Producto no encontrado' });
+  }
+
+  res.json(product);
+});
+
+
+app.post('/products', (req, res) => {
+  const { id, name, price } = req.body;
+
+  const existingProduct = products.find(p => p.id === id);
+  if (existingProduct) {
+    return res.status(400).json({ error: 'El ID del producto ya existe' });
+  }
+
+  const newProduct = { id, name, price };
+  products.push(newProduct);
+
+  res.status(201).json(newProduct);
+});
+
+
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
+});
+
+
+
+
+**vercel.js**
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "server.js",
+        "use": "@vercel/node"
+      }
+    ]
+  }
+  
+  
+
+
+
+   
+
+
+
+
