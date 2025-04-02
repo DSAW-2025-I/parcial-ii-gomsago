@@ -48,12 +48,13 @@ Este examen evalúa tu capacidad para construir un backend básico usando Expres
 
 **NOTA**: No poseo computador personal portatil por lo que solicito un computador en la universidad. Estos computadores no tienen instalado node.js ni los recursos que necesito para poder desplegar en vercel debido a que me piden permisos de administrador (Usuario y contraseña) la  cual es información que yo no poseo. Adjunto , mi evidencia más el código.
 
-![Image](https://github.com/user-attachments/assets/a80e4d7f-811d-417b-b735-d8eeea43f5fc)
+![image](https://github.com/user-attachments/assets/17bba383-d050-4e16-83ae-fd019b3b2ad3)
 
-![Image (1)](https://github.com/user-attachments/assets/75b7dac5-f762-4cee-92d9-ac48a3cc3b34)
+![Image (1)](https://github.com/user-attachments/assets/346566e9-93fe-47d3-a05c-ff21b3768c74)
 
 -------------------------------------------------------------------------------
 **server.js**
+
 const express = require('express');
 const app = express();
 const PORT = 3000;
@@ -107,8 +108,8 @@ app.listen(PORT, () => {
 
 
 
-
 **vercel.js**
+
 {
     "version": 2,
     "builds": [
